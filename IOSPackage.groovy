@@ -1,3 +1,5 @@
+import com.clubfactory.AppParams
+
 def call(Object WorkflowScript) {
     pipeline {
         agent any 
