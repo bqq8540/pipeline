@@ -32,7 +32,7 @@ pipeline {
         }
         stage('SSH') {
             steps {
-                  withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'jenkins-ssh-key-for-abc', \
+                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'jenkins-ssh-key-for-abc', \
                                                              keyFileVariable: 'SSH_KEY_FOR_ABC')]) {
                   // 
                 }
@@ -42,11 +42,11 @@ pipeline {
                   // 
                 }
             }
-            steps {
-                echo $SSH_KEY_FOR_ABC
-                echo $CERTIFICATE_FOR_XYZ
-                echo $XYZ-CERTIFICATE-PASSWORD
-            }
+            // steps {
+            //     echo $SSH_KEY_FOR_ABC
+            //     echo $CERTIFICATE_FOR_XYZ
+            //     echo $XYZ-CERTIFICATE-PASSWORD
+            // }
         }
     }
     post {
