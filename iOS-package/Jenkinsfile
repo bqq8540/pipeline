@@ -30,6 +30,24 @@ pipeline {
                 }
             }
         }
+        stage('SSH') {
+            steps {
+                  withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'jenkins-ssh-key-for-abc', \
+                                                             keyFileVariable: 'SSH_KEY_FOR_ABC')]) {
+                  // 
+                }
+                withCredentials(bindings: [certificate(credentialsId: 'jenkins-certificate-for-xyz', \
+                                                       keystoreVariable: 'CERTIFICATE_FOR_XYZ', \
+                                                       passwordVariable: 'XYZ-CERTIFICATE-PASSWORD')]) {
+                  // 
+                }
+            }
+            steps {
+                echo $SSH_KEY_FOR_ABC
+                echo $CERTIFICATE_FOR_XYZ
+                echo $XYZ-CERTIFICATE-PASSWORD
+            }
+        }
     }
     post {
         always {
