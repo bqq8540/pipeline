@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-common-creds')
+    }
     stages {
         stage('build') {
             steps {
@@ -31,18 +34,9 @@ pipeline {
             }
         }
         stage('usernames and passwords') {
-            environment {
-                BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-common-creds')
-            }
-
             steps {
                 echo 'uer psw'
             }
-            // steps {
-            //     echo $SSH_KEY_FOR_ABC
-            //     echo $CERTIFICATE_FOR_XYZ
-            //     echo $XYZ-CERTIFICATE-PASSWORD
-            // }
         }
     }
     post {
