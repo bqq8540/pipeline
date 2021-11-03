@@ -33,6 +33,11 @@ pipeline {
                 }
             }
         }
+        stage('Jenkins file') {
+            steps {
+                echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}' 
+            }
+        }
         stage('usernames and passwords') {
             steps {
                 echo 'uer psw'
