@@ -30,17 +30,10 @@ pipeline {
                 }
             }
         }
-        stage('SSH') {
-            steps {
-                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'jenkins-ssh-key-for-abc', \
-                                                             keyFileVariable: 'SSH_KEY_FOR_ABC')]) {
-                  // 
-                }
-                withCredentials(bindings: [certificate(credentialsId: 'jenkins-certificate-for-xyz', \
-                                                       keystoreVariable: 'CERTIFICATE_FOR_XYZ', \
-                                                       passwordVariable: 'XYZ-CERTIFICATE-PASSWORD')]) {
-                  // 
-                }
+        stage('usernames and passwords') {
+            environment {
+                BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-common-creds')
+                BITBUCKET_COMMON_CREDS_USR = credentials('jenkins-bitbucket-common-usr')
             }
             // steps {
             //     echo $SSH_KEY_FOR_ABC
