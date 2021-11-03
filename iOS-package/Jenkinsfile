@@ -33,7 +33,10 @@ pipeline {
         stage('usernames and passwords') {
             environment {
                 BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-common-creds')
-                BITBUCKET_COMMON_CREDS_USR = credentials('jenkins-bitbucket-common-usr')
+                // BITBUCKET_COMMON_CREDS_USR = credentials('jenkins-bitbucket-common-usr')
+            }
+            steps {
+                echo 'uer psw'
             }
             // steps {
             //     echo $SSH_KEY_FOR_ABC
