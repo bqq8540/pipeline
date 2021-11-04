@@ -54,7 +54,7 @@ pipeline {
         }
         failure {
             echo 'Run fail!'
-            mail to: '136289426@qq.com'
+            mail to: '136289426@qq.com',
                  subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                  body: "Something is wrong with ${env.BUILD_URL}"
         }
