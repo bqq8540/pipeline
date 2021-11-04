@@ -55,8 +55,8 @@ pipeline {
         stage('Sanity check') {
             steps {
                 // input "Does the staging environment look ok?"
-                echo "${params.Git_Credential_Id}"
-                echo "${params.apple_id}"
+                echo "Git - ${params.Git_Credential_Id}"
+                echo "apple id - ${params.apple_id}"
             }
         }
         stage('Deploy - Production') {
