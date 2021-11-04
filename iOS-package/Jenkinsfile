@@ -47,7 +47,7 @@ pipeline {
     post {
         always {
             echo 'I will allways return!'
-            junit "build/reports/**/${env.BUILD_ID}.xml"
+            junit "build/reports/**/*.xml"
         }
         success {
             echo 'Run success!'
