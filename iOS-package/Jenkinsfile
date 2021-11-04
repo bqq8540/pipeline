@@ -55,8 +55,13 @@ pipeline {
         stage('Sanity check') {
             steps {
                 // input "Does the staging environment look ok?"
-                echo "Git - ${params.Git_Credential_Id}"
-                echo "apple id - ${params.apple_id}"
+                withCredentials([usernamePassword(credentialsId: params.apple_id, passwordVariable: 'password', usernameVariable: 'username')]) {
+                    sh(label: "Uploadting ipa to app store", script: "sh jenkins/upload_to_app_store.sh ${ipa_path} ${username} ${password}")
+                    echo "username - ${username}"
+                    echo "password - ${password}"
+                }
+                // echo "Git - ${params.Git_Credential_Id}"
+                // echo "apple id - ${params.apple_id}"
             }
         }
         stage('Deploy - Production') {
