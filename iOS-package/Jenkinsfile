@@ -56,7 +56,7 @@ pipeline {
             steps {
                 // input "Does the staging environment look ok?"
                 withCredentials([usernamePassword(credentialsId: params.apple_id, passwordVariable: 'password', usernameVariable: 'username')]) {
-                    sh(label: "Uploadting ipa to app store", script: "sh jenkins/upload_to_app_store.sh ${ipa_path} ${username} ${password}")
+                    // sh(label: "Uploadting ipa to app store", script: "sh jenkins/upload_to_app_store.sh ${ipa_path} ${username} ${password}")
                     echo "username - ${username}"
                     echo "password - ${password}"
                 }
