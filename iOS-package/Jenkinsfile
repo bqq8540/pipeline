@@ -3,6 +3,9 @@ pipeline {
     // environment {
     //     BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-common-creds')
     // }
+    parameters {
+        credentials credentialType: 'com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey', defaultValue: 'ce9fe0a2-ce19-406a-b825-5c13cff6d8e6', description: 'SSH credential used to pull & push your git updates.Please make sure this credential has access to all the repositories being handled in the proceeded processes.', name: 'Git_Credential_Id', required: false
+    }
     stages {
         stage('build') {
             steps {
@@ -50,7 +53,8 @@ pipeline {
         }
         stage('Sanity check') {
             steps {
-                input "Does the staging environment look ok?"
+                // input "Does the staging environment look ok?"
+                echo params.Git_Credential_Id
             }
         }
         stage('Deploy - Production') {
